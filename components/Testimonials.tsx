@@ -1,118 +1,123 @@
 "use client";
 
 interface Testimonial {
-  name: string;
+  quote: string;
+  author: string;
   role: string;
-  content: string;
   avatar: string;
-  rating: number;
 }
 
-const testimonials: Testimonial[] = [
-  {
-    name: 'Sarah Chen',
-    role: 'Course Creator',
-    content: 'Accessly transformed how I manage my online courses. Setup took literally 3 minutes, and my conversion rate jumped 40% in the first month!',
-    avatar: 'SC',
-    rating: 5,
-  },
-  {
-    name: 'Marcus Johnson',
-    role: 'Newsletter Publisher',
-    content: 'Finally, a subscription tool that just works. The analytics dashboard helps me understand exactly where readers drop off. Game changer!',
-    avatar: 'MJ',
-    rating: 5,
-  },
-  {
-    name: 'Emma Rodriguez',
-    role: 'Podcast Host',
-    content: 'I switched from a clunky old system to Accessly. My premium podcast subscribers doubled because the checkout process is so smooth.',
-    avatar: 'ER',
-    rating: 5,
-  },
-  {
-    name: 'David Kim',
-    role: 'Community Manager',
-    content: 'Managing 5 different membership tiers used to be a nightmare. Now it takes seconds. The team tier features are incredibly powerful.',
-    avatar: 'DK',
-    rating: 5,
-  },
-  {
-    name: 'Lisa Thompson',
-    role: 'Digital Artist',
-    content: 'As someone who hates dealing with tech, Accessly is a dream. I focus on creating art while it handles all the subscription stuff.',
-    avatar: 'LT',
-    rating: 5,
-  },
-  {
-    name: 'Alex Rivera',
-    role: 'Fitness Coach',
-    content: 'The funnel analytics showed me exactly why people weren\'t completing signup. Fixed those issues and revenue went up 60%!',
-    avatar: 'AR',
-    rating: 5,
-  },
-];
+export default function Testimonials() {
+  const testimonials: Testimonial[] = [
+    {
+      quote:
+        "Accessly a transformé la façon dont je gère ma communauté. En 5 minutes, tout était configuré et mes membres avaient accès à leur contenu.",
+      author: "Marie Dubois",
+      role: "Créatrice de contenu lifestyle",
+      avatar: "MD",
+    },
+    {
+      quote:
+        "Enfin une solution simple qui fait exactement ce dont j'ai besoin. Plus de jonglage entre plusieurs outils, tout est centralisé.",
+      author: "Thomas Martin",
+      role: "Formateur en ligne",
+      avatar: "TM",
+    },
+    {
+      quote:
+        "Le support est incroyable et la plateforme évolue constamment. C'est le partenaire idéal pour faire grandir mon business de créateur.",
+      author: "Sophie Laurent",
+      role: "Coach & Auteure",
+      avatar: "SL",
+    },
+  ];
 
-export default function Testimonials(): React.JSX.Element {
+  const stats: { value: string; label: string }[] = [
+    { value: "5 min", label: "Premier succès" },
+    { value: "98%", label: "Satisfaction client" },
+    { value: "24/7", label: "Support disponible" },
+    { value: "0€", label: "Pour commencer" },
+  ];
+
   return (
-    <section id="testimonials" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-navy-900 via-navy-800/50 to-navy-900" />
-      
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Stats Bar */}
+        <div className="glass-card p-8 mb-20">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl sm:text-4xl font-bold text-gradient mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-gray-400 text-sm">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium mb-4">
-            Testimonials
+          <span className="text-electric-400 font-semibold text-sm tracking-wider uppercase">
+            Témoignages
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-            Loved by
-            <span className="gradient-text"> Content Creators</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+            Ce que disent <span className="text-gradient">nos créateurs</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Join hundreds of creators who have transformed their subscription business with Accessly.
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Rejoignez des centaines de créateurs qui ont simplifié leur gestion
+            d&apos;abonnements avec Accessly.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Testimonials Grid */}
+        <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="card hover:border-cyan-500/50 transition-all duration-300"
+              className="glass-card p-6 hover:bg-navy-700/40 transition-all duration-300"
             >
-              <div className="flex items-center mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <svg
-                    key={i}
-                    className="w-5 h-5 text-yellow-400"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
+              {/* Quote Icon */}
+              <svg
+                className="w-10 h-10 text-electric-500/30 mb-4"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+              </svg>
 
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                &ldquo;{testimonial.content}&rdquo;
-              </p>
+              {/* Quote */}
+              <p className="text-gray-300 mb-6 leading-relaxed">{testimonial.quote}</p>
 
-              <div className="flex items-center">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-white font-semibold text-sm mr-3">
+              {/* Author */}
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-electric-500 to-electric-700 rounded-full flex items-center justify-center text-white font-semibold">
                   {testimonial.avatar}
                 </div>
                 <div>
-                  <p className="text-white font-medium">{testimonial.name}</p>
-                  <p className="text-gray-400 text-sm">{testimonial.role}</p>
+                  <div className="text-white font-semibold">{testimonial.author}</div>
+                  <div className="text-gray-400 text-sm">{testimonial.role}</div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 flex flex-wrap items-center justify-center gap-12 opacity-50">
-          <div className="text-2xl font-bold text-gray-500">ProductHunt</div>
-          <div className="text-2xl font-bold text-gray-500">TechCrunch</div>
-          <div className="text-2xl font-bold text-gray-500">Forbes</div>
-          <div className="text-2xl font-bold text-gray-500">The Verge</div>
+        {/* Trust Logos */}
+        <div className="mt-20 text-center">
+          <p className="text-gray-500 text-sm mb-8">
+            Intégrations disponibles avec vos outils préférés
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-8 opacity-50">
+            {["Discord", "Slack", "Notion", "Zapier", "Stripe"].map((tool, i) => (
+              <div
+                key={i}
+                className="text-gray-400 font-semibold text-lg px-4 py-2 border border-navy-700 rounded-lg"
+              >
+                {tool}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
