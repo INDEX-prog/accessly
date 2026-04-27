@@ -1,94 +1,100 @@
 "use client";
 
-import Link from 'next/link';
+import Link from "next/link";
 
-interface FooterLink {
-  name: string;
-  href: string;
-}
+export default function Footer() {
+  const footerLinks: { title: string; links: { label: string; href: string }[] }[] = [
+    {
+      title: "Produit",
+      links: [
+        { label: "Fonctionnalités", href: "#features" },
+        { label: "Tarifs", href: "#pricing" },
+        { label: "Intégrations", href: "#" },
+        { label: "API", href: "#" },
+        { label: "Changelog", href: "#" },
+      ],
+    },
+    {
+      title: "Ressources",
+      links: [
+        { label: "Documentation", href: "#" },
+        { label: "Guides", href: "#" },
+        { label: "Blog", href: "#" },
+        { label: "Communauté", href: "#" },
+        { label: "Statut", href: "#" },
+      ],
+    },
+    {
+      title: "Entreprise",
+      links: [
+        { label: "À propos", href: "#" },
+        { label: "Carrières", href: "#" },
+        { label: "Contact", href: "#" },
+        { label: "Partenaires", href: "#" },
+      ],
+    },
+    {
+      title: "Légal",
+      links: [
+        { label: "Confidentialité", href: "#" },
+        { label: "CGU", href: "#" },
+        { label: "Cookies", href: "#" },
+        { label: "RGPD", href: "#" },
+      ],
+    },
+  ];
 
-interface FooterSection {
-  title: string;
-  links: FooterLink[];
-}
-
-const footerSections: FooterSection[] = [
-  {
-    title: 'Product',
-    links: [
-      { name: 'Features', href: '#features' },
-      { name: 'Pricing', href: '#pricing' },
-      { name: 'Dashboard', href: '/dashboard' },
-      { name: 'API', href: '#' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { name: 'About', href: '#' },
-      { name: 'Blog', href: '#' },
-      { name: 'Careers', href: '#' },
-      { name: 'Contact', href: '#' },
-    ],
-  },
-  {
-    title: 'Resources',
-    links: [
-      { name: 'Documentation', href: '#' },
-      { name: 'Help Center', href: '#' },
-      { name: 'Community', href: '#' },
-      { name: 'Guides', href: '#' },
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      { name: 'Privacy', href: '#' },
-      { name: 'Terms', href: '#' },
-      { name: 'Cookie Policy', href: '#' },
-      { name: 'GDPR', href: '#' },
-    ],
-  },
-];
-
-export default function Footer(): React.JSX.Element {
   return (
-    <footer className="bg-navy-950 border-t border-navy-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
-          <div className="col-span-2">
+    <footer className="bg-navy-950 border-t border-navy-800/50 pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
+          {/* Brand Column */}
+          <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">A</span>
+              <div className="w-10 h-10 bg-gradient-to-br from-electric-500 to-electric-700 rounded-xl flex items-center justify-center">
+                <svg
+                  className="w-6 h-6 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"
+                  />
+                </svg>
               </div>
               <span className="text-xl font-bold text-white">Accessly</span>
             </Link>
-            <p className="text-gray-400 mb-6 max-w-sm">
-              Empowering creators to manage access and subscriptions effortlessly. 
-              Build sustainable recurring revenue.
+            <p className="text-gray-400 text-sm mb-6 max-w-xs">
+              La solution tout-en-un pour les créateurs de contenu qui veulent
+              gérer leurs accès et abonnements sans effort.
             </p>
             <div className="flex space-x-4">
+              {/* Social Icons */}
               <a
                 href="#"
-                className="w-10 h-10 bg-navy-800 hover:bg-navy-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+                className="w-10 h-10 bg-navy-800 hover:bg-navy-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-electric-400 transition-colors"
                 aria-label="Twitter"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                 </svg>
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-navy-800 hover:bg-navy-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+                className="w-10 h-10 bg-navy-800 hover:bg-navy-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-electric-400 transition-colors"
                 aria-label="LinkedIn"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-navy-800 hover:bg-navy-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-colors"
+                className="w-10 h-10 bg-navy-800 hover:bg-navy-700 rounded-lg flex items-center justify-center text-gray-400 hover:text-electric-400 transition-colors"
                 aria-label="GitHub"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -98,17 +104,18 @@ export default function Footer(): React.JSX.Element {
             </div>
           </div>
 
-          {footerSections.map((section, index) => (
+          {/* Links Columns */}
+          {footerLinks.map((section, index) => (
             <div key={index}>
-              <h3 className="text-white font-semibold mb-4">{section.title}</h3>
+              <h4 className="text-white font-semibold mb-4">{section.title}</h4>
               <ul className="space-y-3">
-                {section.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
+                {section.links.map((link, i) => (
+                  <li key={i}>
                     <Link
                       href={link.href}
-                      className="text-gray-400 hover:text-cyan-400 transition-colors"
+                      className="text-gray-400 hover:text-electric-400 text-sm transition-colors"
                     >
-                      {link.name}
+                      {link.label}
                     </Link>
                   </li>
                 ))}
@@ -117,14 +124,18 @@ export default function Footer(): React.JSX.Element {
           ))}
         </div>
 
-        <div className="border-t border-navy-800 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between">
-          <p className="text-gray-500 text-sm">
-            © {new Date().getFullYear()} Accessly. All rights reserved.
-          </p>
-          <div className="flex items-center space-x-4 mt-4 md:mt-0">
-            <span className="text-gray-500 text-sm">Made with</span>
-            <span className="text-red-500">❤️</span>
-            <span className="text-gray-500 text-sm">for content creators</span>
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-navy-800/50">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-gray-500 text-sm">
+              © {new Date().getFullYear()} Accessly. Tous droits réservés.
+            </p>
+            <div className="flex items-center space-x-6">
+              <span className="text-gray-500 text-sm flex items-center space-x-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full" />
+                <span>Tous les systèmes opérationnels</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>
